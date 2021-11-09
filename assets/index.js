@@ -42,7 +42,15 @@ inquirer
   .then((response) => {
     console.log(response);
     const { name, location, bio, linkedin, github } = response;
-    fs.readFile("test.txt", "utf8", (err) =>
-      err ? console.error(err) : console.log("HTML logged")
+    fs.writeFile(
+      "README.md",
+      `# Personal Portfolio Page
+## Description
+This site is meant to act as a landing page for content I create. It should be accessible to others and able to demonstrate my work.
+## Installation
+The repo is uploaded to github at the link https://github.com/ChrisIgg/personal-page and is accessible at the url link https://chrisigg.github.io/personal-page/.
+## Usage
+The following images may help:`,
+      (err) => (err ? console.error(err) : console.log("HTML logged"))
     );
   });
