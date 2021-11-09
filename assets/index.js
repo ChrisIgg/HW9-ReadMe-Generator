@@ -15,40 +15,40 @@ inquirer
   .prompt([
     {
       type: "input",
-      message: "What is your name",
+      message: "What is the name of your project",
       name: "name",
     },
     {
       type: "input",
-      message: "Where are you located?",
-      name: "location",
+      message: "Give an overview of the project?",
+      name: "description",
+    },
+    // {
+    //   type: "input",
+    //   message: "What is your bio",
+    //   name: "bio",
+    // },
+    {
+      type: "input",
+      message: "What is your web deployment URl",
+      name: "weblink",
     },
     {
       type: "input",
-      message: "What is your bio",
-      name: "bio",
-    },
-    {
-      type: "input",
-      message: "What is your linkedin URl",
-      name: "linkedin",
-    },
-    {
-      type: "input",
-      message: "What is your Github profile",
+      message: "What is your Github link",
       name: "github",
     },
   ])
   .then((response) => {
     console.log(response);
-    const { name, location, bio, linkedin, github } = response;
+    const { name, description, weblink, github } = response;
     fs.writeFile(
       "README.md",
-      `# Personal Portfolio Page
+      `# ${name}
 ## Description
-This site is meant to act as a landing page for content I create. It should be accessible to others and able to demonstrate my work.
+${description}
 ## Installation
-The repo is uploaded to github at the link https://github.com/ChrisIgg/personal-page and is accessible at the url link https://chrisigg.github.io/personal-page/.
+The repo is uploaded to github at the link ${github} and is accessible at the url link ${weblink}.
 ## Usage
 The following images may help:`,
       (err) => (err ? console.error(err) : console.log("HTML logged"))
